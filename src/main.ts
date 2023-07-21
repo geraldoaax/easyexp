@@ -10,7 +10,7 @@ async function bootstrap() {
   console.log(JSON.stringify(parsedData, null, 2));
   process.exit();
 
-  // const app = await NestFactory.create(AppModule);
-  // await app.listen(3000);
+  const server = await NestFactory.create(AppModule);
+  await server.listen(3000);
 }
 bootstrap();

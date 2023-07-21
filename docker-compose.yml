@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  # app_exp:
+  #   build: .
+  #   # image: easymine.azurecr.io/infraestrutura_backend_app:latest
+  #   container_name: easymine_infraestrutura_app
+  #   networks:
+  #     - app_exp
+  #   ports:
+  #     - "4000:3000"
+  #     - "5555:5555"
+  #   volumes:
+  #     - .:/home/node/app
+  #     - .env:/usr/src/app/.env
+  #   depends_on:
+  #     - db_infraestrutura
+  #   environment:
+  #     NODE_ENV: "production"
+  #     DATABASE_URL: "postgresql://postgres:InsDES425@192.168.0.104:5432/infradb?schema=public"
+  #   command: sh -c "npm install @nestjs/swagger && npx prisma generate && npm install && npx prisma migrate deploy && npm start"
+
+  db_eastexp:
+    build: .docker/postgres
+    # image: easymine.azurecr.io/infraestrutura_backend_db:latest
+    container_name: db_infraestrutura
+    restart: always
+    networks:
+      - app_exp
+    tty: true
+    ports:
+      - "5432:5432"
+    volumes:
+      - .docker/dbdata:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_HOST_AUTH_METHOD=trust
+      - POSTGRESS_PASSWORD=InsDES425
+      - POSTGRESS_DB=expdb
+    # command: sh -c " apk add -U tzdata && cp /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime && npm install @nestjs/swagger && npx prisma generate && npm install && npm start"
+
+networks:
+  app_exp:
+    name: app_exp

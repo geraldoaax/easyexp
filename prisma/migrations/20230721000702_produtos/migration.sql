@@ -1,0 +1,20 @@
+-- CreateTable
+CREATE TABLE "Produtos" (
+    "id" SERIAL NOT NULL,
+    "NCM" TEXT NOT NULL,
+    "CFOP" TEXT NOT NULL,
+    "cEAN" TEXT NOT NULL,
+    "qCom" DOUBLE PRECISION NOT NULL,
+    "uCom" TEXT NOT NULL,
+    "cProd" TEXT NOT NULL,
+    "qTrib" DOUBLE PRECISION NOT NULL,
+    "uTrib" TEXT NOT NULL,
+    "vProd" DOUBLE PRECISION NOT NULL,
+    "xProd" TEXT NOT NULL,
+    "indTot" TEXT NOT NULL,
+    "vUnCom" DOUBLE PRECISION NOT NULL,
+    "vUnTrib" DOUBLE PRECISION NOT NULL,
+    "cEANTrib" TEXT NOT NULL,
+
+    CONSTRAINT "Produtos_pkey" PRIMARY KEY ("id")
+);

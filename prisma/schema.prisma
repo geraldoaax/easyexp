@@ -1,0 +1,35 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model NFeProc {
+  id        Int    @id @default(autoincrement())
+  versao    String
+  xmlns     String
+  infNFe    Json
+  Signature Json
+  protNFe   Json
+}
+
+model Produtos {
+  id       Int    @id @default(autoincrement())
+  NCM      String
+  CFOP     String
+  cEAN     String
+  qCom     Float
+  uCom     String
+  cProd    String
+  qTrib    Float
+  uTrib    String
+  vProd    Float
+  xProd    String
+  indTot   String
+  vUnCom   Float
+  vUnTrib  Float
+  cEANTrib String
+}
